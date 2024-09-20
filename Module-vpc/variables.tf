@@ -18,3 +18,6 @@ variable "igw_name" {
   type = string
   description = "IGW Name"
 }
+variable "" {
+  
+}
