@@ -18,6 +18,11 @@ variable "igw_name" {
   type = string
   description = "IGW Name"
 }
-variable "" {
-  
+variable "cidr-public-subnet" {
+  type = list(string)
+  description = "CIDR for public subnet"
+}
+variable "subnet-az" {
+  type = list(string)
+  description = "Availability Zones"
 }
