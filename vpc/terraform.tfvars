@@ -1,0 +1,5 @@
+aws_region = "us-east-1"
+vpc_cidr = "[10.0.1.0/16]"
+vpc_tenency = "default"
+vpc_name = "Teraform-VPC"
+igw_name = "tf-igw"
