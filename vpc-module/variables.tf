@@ -19,15 +19,15 @@ variable "igw_name" {
   description = "IGW Name"
 }
 
-variable "subnet-az" {
+variable "subnet_az" {
   type = list(string)
   description = "Availability Zones"
 }
-variable "public-subnet-cidr" {
+variable "public_subnet_cidr" {
   type = list(string)
   description = "CIDR for public subnet"
 }
-variable "private-subnet-cidr" {
+variable "private_subnet_cidr" {
   type = list(string)
   description = "CIDR for private subnet"
 }

@@ -1,11 +1,11 @@
-aws_region = "us-east-1"
+aws_region = "us_east_1"
 vpc_cidr = "10.0.0.0/16"
 vpc_tenency = "default"
-vpc_name = "Teraform-VPC"
-igw_name = "tf-igw"
-subnet-az = [ "us-east-1a", "us-east-1b" ]
-public-subnet-cidr = [ "10.0.6.0/24", "10.0.7.0/24" ]
-private-subnet-cidr = [ "10.0.1.0/24", "10.0.2.0/24" ]
+vpc_name = "Teraform_VPC"
+igw_name = "tf_igw"
+subnet_az = [ "us_east_1a", "us_east_1b" ]
+public_subnet_cidr = [ "10.0.6.0/24", "10.0.7.0/24" ]
+private_subnet_cidr = [ "10.0.1.0/24", "10.0.2.0/24" ]
 
 
 
