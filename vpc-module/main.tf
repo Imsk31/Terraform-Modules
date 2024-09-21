@@ -43,7 +43,7 @@ resource "aws_route_table" "terraform-vpc-pub-rt" {
 resource "aws_route_table_association" "terraform-vpc-pub-rt-assocication" {
   count = length(var.public-subnet-cidr)
   route_table_id = aws_route_table.terraform-vpc-pub-rt[count.index].id
-  subnet_id = aws_route_table.public-subnet[count.index].id
+  subnet_id = aws_subnet.public-subnet[count.index].id
 }
 
 
