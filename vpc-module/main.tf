@@ -70,7 +70,7 @@ resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat-eip.id
   
 tags = {
-  value = "Nat Gateway"
+  value = "Nat Gateway for terraform vpc private subnet"
 }
 }
 
