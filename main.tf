@@ -1,5 +1,5 @@
 module "vpc" {
-  source              = "./vpc-module"
+  source              = "./module/vpc"
   vpc_cidr            = var.vpc_cidr
   instance_tenancy    = var.instance_tenancy    
   vpc_name            = var.vpc_name            
