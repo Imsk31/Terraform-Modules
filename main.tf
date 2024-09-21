@@ -1,7 +1,7 @@
 module "vpc" {
   source              = "./module/vpc"
   vpc_cidr            = var.vpc_cidr
-  instance_tenancy    = var.instance_tenancy    
+  vpc_tenency         = var.vpc_tenency   
   vpc_name            = var.vpc_name            
   igw_name            = var.igw_name           
   public_subnet_cidr  = var.public_subnet_cidr 
