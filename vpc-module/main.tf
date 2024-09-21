@@ -30,6 +30,11 @@ resource "aws_route_table" "terraform-vpc-pub-rt" {
   count = length(var.public-subnet-cidr)
   vpc_id = aws_vpc.terraform_vpc.id
 
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
   tags = {
     value = "public subnet rt"
   }
@@ -39,11 +44,6 @@ resource "aws_route_table_association" "terraform-vpc-pub-rt-assocication" {
   count = length(var.public-subnet-cidr)
   route_table_id = aws_route_table.terraform-vpc-pub-rt.id
   subnet_id = aws_route_table.terraform-vpc-pub-sub-rt[count.index].id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
 }
 
 
@@ -60,7 +60,7 @@ tags = {
 }
 
 resource "aws_eip" "nat-eip" {
-  vpc = true
+  domain = "vpc"
   network_border_group = var.aws_region 
 }
 
@@ -78,6 +78,11 @@ resource "aws_route_table" "pri-rt" {
   vpc_id = aws_vpc.terraform_vpc.id
   count = length(var.private-subnet-cidr)
 
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.nat.id
+  }
+
   tags = {
     value = "private subnet rt"
   }
@@ -86,9 +91,8 @@ resource "aws_route_table" "pri-rt" {
 
 resource "aws_route_table_association" "terraform-vpc-pri-rt-association" {
   count = length(var.private-subnet-cidr)
-  route_table_id = aws_route_table.pri-rt[count.index].id
+  route_table_id = aws_route_table.pri-rt.id
   subnet_id = aws_subnet.private-subnet[count.index].id
-
 }
 
 
