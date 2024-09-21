@@ -26,7 +26,7 @@ resource "aws_subnet" "public-subnet" {
   }
 }
 
-resource "aws_route_table" "terraform-vpc-pub-sub-rt" {
+resource "aws_route_table" "terraform-vpc-pub-rt" {
   count = length(var.public-subnet-cidr)
   vpc_id = aws_vpc.terraform_vpc.id
 
@@ -37,7 +37,7 @@ resource "aws_route_table" "terraform-vpc-pub-sub-rt" {
 
 resource "aws_route_table_association" "terraform-vpc-pub-rt-assocication" {
   count = length(var.public-subnet-cidr)
-  route_table_id = aws_route_table.terraform-vpc-pub-sub-rt.id
+  route_table_id = aws_route_table.terraform-vpc-pub-rt.id
   subnet_id = aws_route_table.terraform-vpc-pub-sub-rt[count.index].id
 
   route {
@@ -86,7 +86,7 @@ resource "aws_route_table" "pri-rt" {
 
 resource "aws_route_table_association" "terraform-vpc-pri-rt-association" {
   count = length(var.private-subnet-cidr)
-  route_table_id = aws_route_table.pri-rt.id
+  route_table_id = aws_route_table.pri-rt[count.index].id
   subnet_id = aws_subnet.private-subnet[count.index].id
 
 }
