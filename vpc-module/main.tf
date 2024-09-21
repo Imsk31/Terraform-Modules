@@ -42,8 +42,8 @@ resource "aws_route_table" "terraform-vpc-pub-rt" {
 
 resource "aws_route_table_association" "terraform-vpc-pub-rt-assocication" {
   count = length(var.public-subnet-cidr)
-  route_table_id = aws_route_table.terraform-vpc-pub-rt.id
-  subnet_id = aws_route_table.terraform-vpc-pub-sub-rt[count.index].id
+  route_table_id = aws_route_table.terraform-vpc-pub-rt[count.index].id
+  subnet_id = aws_route_table.public-subnet[count.index].id
 }
 
 
@@ -65,7 +65,7 @@ resource "aws_eip" "nat-eip" {
 }
 
 resource "aws_nat_gateway" "nat" {
-  subnet_id = aws_subnet.public-subnet.0.id
+  subnet_id = aws_subnet.public-subnet[0].id
   connectivity_type = "public"
   allocation_id = aws_eip.nat-eip.id
   
@@ -91,7 +91,7 @@ resource "aws_route_table" "pri-rt" {
 
 resource "aws_route_table_association" "terraform-vpc-pri-rt-association" {
   count = length(var.private-subnet-cidr)
-  route_table_id = aws_route_table.pri-rt.id
+  route_table_id = aws_route_table.pri-rt[count.index].id
   subnet_id = aws_subnet.private-subnet[count.index].id
 }
 
