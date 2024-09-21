@@ -31,9 +31,5 @@ variable "private-subnet-cidr" {
   type = list(string)
   description = "CIDR for private subnet"
 }
-variable "backend_path" {
-  type = string
-  description = "backend path"
-}
 
 
