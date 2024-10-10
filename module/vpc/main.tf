@@ -18,7 +18,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id = aws_vpc.terraform_vpc.id
   count = length(var.public_subnet_cidr)
   cidr_block = var.public_subnet_cidr[count.index]
-  availability_zone = element(var.subnet_az, count.index)
+  availability_zone = element(var.availability_zones, count.index)
   map_public_ip_on_launch = true
   
   tags = { 
@@ -51,7 +51,7 @@ resource "aws_subnet" "private_subnet" {
   vpc_id = aws_vpc.terraform_vpc.id
   count = length(var.private_subnet_cidr)
   cidr_block = var.private_subnet_cidr[count.index]
-  availability_zone = element(var.subnet_az, count.index)
+  availability_zone = element(var.availability_zones, count.index)
   map_public_ip_on_launch = false
 
 tags = {
