@@ -6,6 +6,6 @@ module "vpc" {
   igw_name            = var.igw_name           
   public_subnet_cidr  = var.public_subnet_cidr 
   private_subnet_cidr = var.private_subnet_cidr
-  subnet_az           = var.subnet_az           
+  availability_zones  = var.availability_zones           
   aws_region          = var.aws_region         
 }

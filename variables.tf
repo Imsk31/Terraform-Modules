@@ -19,7 +19,7 @@ variable "igw_name" {
   description = "IGW Name"
 }
 
-variable "subnet_az" {
+variable "availability_zones" {
   type = list(string)
   description = "Availability Zones"
 }
