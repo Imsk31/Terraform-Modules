@@ -18,8 +18,7 @@ variable "igw_name" {
   type = string
   description = "IGW Name"
 }
-
-variable "availability_zones" {
+variable "azs" {
   type = list(string)
   description = "Availability Zones"
 }
