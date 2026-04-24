@@ -78,7 +78,7 @@ A single codebase serves both `dev` and `prod` environments via Terraform worksp
         ├── main.tf          # RDS instance, subnet group, parameter group
         ├── sg.tf          
         ├── variables.tf
-        └── outputs.tf
+        └── outputs.tf       # Rds endpoint 
 ```
 
 ---
